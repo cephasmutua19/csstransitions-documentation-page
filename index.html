@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Beginners Css Transition</title>
+        <link rel="icon" type="image/png"href="images/cephdesignslogo_junglegreen.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <main id="main-doc">
+        <section class="main-section" id="introduction">
+            <h1>Introduction</h1>
+            <p>The CSS Transition property is a simple way to animation to our website</p>
+            <p>Animation on the web increases user experience and the most basic way to animate something is with Transition.<blockquote cite="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><span>"Transitions enable you to define transition between two states of an element."</span> <cite><a href="-https://developer.mozilla.org/en-US/docs/Web/CSS/transition">-https://developer.mozilla.org/en-US/docs/Web/CSS/transition</a></cite></blockquote></p>
+            
+            <p>When the state of an element changes through things like hover, focus or something else which can change its CSS Property. Transition make the change transition from one state to another instead of instant change. </p> 
+            <p>Here are some of the transition properties we are going to look at.</p>
+            <ul>
+                <li>transition-duration</li>
+                <li>transition-property</li>
+                <li>transition-timing-function</li>
+                <li>transition-delay</li>
+                <li>transition</li>
+            </ul>
+        </section>
+        <section class="main-section" id="transition-duration">
+            <h1>Transition-duration</h1>
+            <P>It takes in a number followed by ms(milliseconds) or s(seconds). In General it is suggested to use ms, because while CSS can accept ms and s, JavaScript only accepts ms. So even if you are currently not using JavaScript, you will probably going to eventually get into it. It is handy to be using ms as a standard through everything you are doing. </P>
+            <p>Here is a sample:</p>
+            <code class="code">.div{
+                width: 300px;
+                height: 300px;
+                background: #3DCCC7;
+                transition-duration: 500ms;
+            }
+            <br>
+            <br>
+                .div:hover{
+                    background: #FF6B6B;
+                }
+                </code>
+                <p>Short durations are key for simple animations , but for complex animations one can set as required.</p>
+        </section>
+        <section class="main-section" id="transition-property">
+            <h1>Transition-property</h1>
+            <p>This is what is being transitioned, things like width, background, transform.... etc.</p>
+            <p>Sample:</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    transition-duration: 1000ms;
+                    transition-property: background, transform;
+                }
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+            <p>One can also do the same thing by setting it to "all". </p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    transition-duration: 1000ms;
+                    transition-property: all;
+                }
+
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+            <p> Though this is an easy and fast way to do it, it is not encouraged. Transitions are CPU intensive. There are some that the GPU can rely on but not many. Most of the time it is the CPU that's doing it and this can cause some really junky animations. When using "all", it tries to animate everything (eg. width , height), which might slow things down. It might be working well on a super high end computer or gadget, but not on a budgeted ones.</p>
+            <p>The comma seperation style helps it to focus on the specific properties targeted making it easy on the CPU therefore better performance. That is why this is encouraged</p>
+        </section>
+        <section class="main-section" id="transition-timing-function">
+            <h1>Transition-timing-function</h1>
+            <p>This is a fun one with a long wierd name. It's a wierd one especially if one is not familiar with some of the things like "ease-in", the "bezier curves". This creates a bouncy movement effect on the animation with the animation duration. </p>
+            <p>Here are the most common ones:</p>
+            <ul type="circle">
+                <li>Linear</li>
+                <li>Ease</li>
+                <li>Ease-in</li>
+                <li>Ease- out</li>
+                <li>Ease-in-out</li>
+            </ul>
+            <p>The defult is "ease".</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    transition-duration: 1000ms;
+                    transition-property: background, transform;
+                    transition-timing-function: ease-in;
+                }
+
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+            <p>There are actually a few more options than these ones. If you want a faster way to work than guessing what you really want to do, the "Dev tools" are fantastic ways to visualize whats going on and offer us more option to use. One can get the "cubic-bezier" of which you can tweak then copy the desired one to your code.</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    transition-duration: 1000ms;
+                    transition-property: background, transform;
+                    transition-timing-function: cubic-bezier(1,.11,.22,1.41);
+                }
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+        </section>
+        <section class="main-section" id="transition-delay">
+            <h1>Transition-delay</h1>
+            <p>This defines how long we should wait for the transition to start happening.</p>
+            <p>Sample:</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    transition-duration: 1000ms;
+                    transition-property: background, transform;
+                    transition-timing-function: cubic-bezier(1,.11,.22,1.41);
+                    transition-delay: 2s;
+                }
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+        </section>
+        <section class="main-section" id="transition">
+            <h1>Transition</h1>
+            <p>Instead of writing out all these properties seperately, you can write them in one "transition" property. Just like there is margin, which takes values for margin- top, margin-left...etc</p>
+            <p>What is important is order you put them in.</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    //transition-duration: 250ms;
+                    //transition-property: background, transform;
+                    //transition-timing-function: cubic-bezier(1,.11,.22,1.41);
+                   // transition-delay: 2s;
+                   transition: background 250ms ease-in, transform 500ms ease-out;
+                }
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+            <p>If you take the duration "250ms" and set it as the first and add a second number, the second will take the role of transition-delay.</p>
+            <code class="code">
+                .div{
+                    width: 300px;
+                    height: 300px;
+                    background: #3DCCC7;
+                    //transition-duration: 250ms;
+                    //transition-property: background, transform;
+                    //transition-timing-function: cubic-bezier(1,.11,.22,1.41);
+                   // transition-delay: 2s;
+                   transition: background 250ms ease-in, 500ms transform ease-out 1s;
+                }
+                <br>
+            <br>
+                    .div:hover{
+                        background: #FF6B6B;
+                        transform: rotate(45deg);
+                    }
+            </code>
+           
+        </section>
+        <section class="main-section" id="conclusion">
+            <h1>Conclusion</h1>
+            <p>On performance, if you can limit the animations to transforms and opacity. In the code examples we are transitioning our background. In general we do want to avoid this, though most do transition background for things like button hover. For transforms and opacities, the browser uses our graphic cards for these animations so it helps them run smoothly. For others if there is no GPU acceleration we quickly run into junky animations especially if we use the transition "all".</p>
+            <p>It is fun to animate things like box-shadows and borders and a whole bunch of stuff... all at the same time, but be aware the browser is re-paintning all this and it has a hit on performance</p>
+            <p>Hope this has been a nice introduction on how to handle CSS transition, and some other thing you might do with it.</p>
+
+            <p class="refrence">Extracted and edited from Kevin Powell's youtube Tutorials. Check out his <a href="https//codepen.io/kevinpowell/pres/024807f6925b3f0864a190e4c793311d?editors=0100">codepen sample</a> on this topic.</p>
+            <ul>
+                <footer>
+                    <img src="images/cephdesignslogo_junglegreen.png" alt="cephdev logo">
+                    <p>CEPHDEV &copy;</p>
+                </footer>
+
+        </section>
+    </main>
+    <nav id="navbar">
+        <h1>CSS Transition</h1>
+        <div class="scroll">
+        <a href="#introduction" class="nav-link">Introduction</a>
+        <a href="#transition-duration" class="nav-link">Transition-duration</a>
+        <a href="#transition-property" class="nav-link">Transition-property</a>
+        <a href="#transition-timing-function" class="nav-link">Transition-timing-function</a>
+        <a href="#transition-delay" class="nav-link">Transition-delay</a>
+        <a href="#transition" class="nav-link">Transition</a>
+        <a href="#conclusion" class="nav-link">Conclusion</a>
+    </div>
+    </nav>
+    
+    </body>
+</html>
